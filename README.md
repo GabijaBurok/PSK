@@ -1,1 +1,1 @@
-"# PSK" 
+Programų Sistemų Kūrimo projektas
