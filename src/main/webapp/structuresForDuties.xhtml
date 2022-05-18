@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Select one of the available Structures:</h2>
+    <ol>
+        <ui:repeat value="#{structures.allStructures}" var="structure">
+            <li><h:link value="#{structure.structure_name}" outcome="duties?structureId=#{structure.id}"/></li>
+        </ui:repeat>
+    </ol>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>
