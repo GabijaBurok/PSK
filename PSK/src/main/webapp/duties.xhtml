@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>#{structureDuties.structure.structure_name} duties:</h2>
+    <ol>
+        <ui:repeat value="#{structureDuties.structure.duties}" var="duty">
+            <li>#{duty.duty_name}</li>
+        </ui:repeat>
+    </ol>
+    <br></br>
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{structureDuties.dutyToCreate.duty_name}" required="true" />
+        <h:commandButton value="Assign Duty to the Structure" action="#{structureDuties.createDuty}" >
+            <f:param name="structureId" value="#{structureDuties.structure.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

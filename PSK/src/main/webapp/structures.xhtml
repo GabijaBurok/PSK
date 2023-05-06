@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Structures:</h2>
+    <ol>
+        <ui:repeat value="#{structures.allStructures}" var="structure">
+            <li>
+                <h:link value="#{structure.structure_name}, #{structure.member_number}" outcome="duties?structureId=#{structure.id}"/>
+                <h:button value="Update" outcome="structureDetails?structureId=#{structure.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:outputLabel for="name">Enter Name: </h:outputLabel>
+        <h:inputText id="name" value="#{structures.structureToCreate.structure_name}" required="true" maxlength="50"/>
+        <br/><br/>
+        <h:outputLabel for="member_number">Enter member number: </h:outputLabel>
+        <h:inputText id="member_number" value="#{structures.structureToCreate.member_number}" required="true" />
+        <br/><br/>
+        <h:commandButton value="Add new structure" action="#{structures.createStructure}"/>
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>

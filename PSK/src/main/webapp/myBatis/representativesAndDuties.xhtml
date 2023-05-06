@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>Representatives:</h2>
+    <ol>
+        <ui:repeat value="#{representativesAndDutiesMB.allRepresentatives}" var="representative">
+            <li><h:link value="#{representative.representativeName} #{representative.representativeLastName}" outcome="/myBatis/representativeDuties?representativeId=#{representative.id}" /></li>
+
+            <span>Duties: </span>
+            <ul>
+                <ui:repeat value="#{representative.dutyList}" var="duty">
+                    <li><h:link value="#{duty.dutyName}" outcome="/myBatis/representativeListForDuties?dutyId=#{duty.id}" /></li>
+                </ui:repeat>
+            </ul>
+            <hr/>
+
+        </ui:repeat>
+    </ol>
+    <h1>Add new representative</h1>
+    <h:form>
+        <label>representative name: </label>
+        <h:inputText value="#{representativesAndDutiesMB.representativeToCreate.representativeName}" required="true"/>
+        <br/><br/>
+        <label>representative last name: </label>
+        <h:inputText value="#{representativesAndDutiesMB.representativeToCreate.representativeLastName}" required="true"/>
+        <h:commandButton value="Add new representative" action="#{representativesAndDutiesMB.createRepresentative()}" />
+    </h:form>
+    <h:link value="Back to index" outcome="/index"/>
+</h:body>
+</html>
